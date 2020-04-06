@@ -62,7 +62,7 @@ class BasicCalculator(Calculator):
         parenthesis in it) -> [1, '*', 4]
         :return: the result
         """
-        for operations in self._operations_functions:
+        for operations in self._operations_order:
             index = 1
             while index < (len(math_expr)):
                 element = math_expr[index]
