@@ -10,3 +10,7 @@ class Calculator(ABC):
     @abstractmethod
     def evaluate(self, math_expr):
         pass
+
+    @abstractmethod
+    def __doc__(self):
+        pass
