@@ -43,7 +43,7 @@ class BasicCalculator(Calculator):
                 stack_open_parenthesis_pos.append(index)
             elif element == CLOSE_PARENTHESIS:
                 last_open_parenthesis_pos = stack_open_parenthesis_pos.pop()
-                result = self._eval_none_parenthesis_expr(stack_expr[last_open_parenthesis_pos + 1:])
+                result = self.__eval_none_parenthesis_expr(stack_expr[last_open_parenthesis_pos + 1:])
                 # Delete the Calculate part from the stack expression
                 stack_expr = stack_expr[:last_open_parenthesis_pos]
                 # Add the result to the stack expression
@@ -51,7 +51,7 @@ class BasicCalculator(Calculator):
             else:
                 stack_expr.append(element)
         if len(stack_expr) > 1:
-            return self._eval_none_parenthesis_expr(stack_expr)
+            return self.__eval_none_parenthesis_expr(stack_expr)
         return stack_expr.pop()
 
     def __eval_none_parenthesis_expr(self, math_expr):
