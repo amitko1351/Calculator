@@ -73,7 +73,7 @@ class BasicCalculator(Calculator):
                     result = operation_function(math_expr[index - 1], math_expr[index + 1])
                     # Slice the list so the expression calculated be delete and instead the result be in the list
                     # example : [1, '+', 4, '/', 2] --> [1, '+', 2]
-                    math_expr = math_expr[:index - 1] + [result] + math_expr[:index + 2]
+                    math_expr = math_expr[:index - 1] + [result] + math_expr[index + 2:]
                 else:
                     index += 1
         return math_expr.pop()
