@@ -36,11 +36,10 @@ class BasicCalculator(Calculator):
         global CLOSE_PARENTHESIS, OPEN_PARENTHESIS
         stack_expr = []  # Contain the expression used for the algorithm for scan parenthesis
         stack_open_parenthesis_pos = []  # Contain thr places of the open parenthesis
-        for index in range(len(math_expr)):
-            element = math_expr[index]
+        for element in math_expr:
             if element == OPEN_PARENTHESIS:
                 stack_expr.append(element)
-                stack_open_parenthesis_pos.append(index)
+                stack_open_parenthesis_pos.append(len(stack_expr) - 1)
             elif element == CLOSE_PARENTHESIS:
                 last_open_parenthesis_pos = stack_open_parenthesis_pos.pop()
                 result = self.__eval_none_parenthesis_expr(stack_expr[last_open_parenthesis_pos + 1:])
