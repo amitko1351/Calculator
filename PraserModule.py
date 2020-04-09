@@ -7,7 +7,7 @@ CLOSE_PARENTHESIS = ')'
 UNARY_OPERATORS = ('+', '-')
 DOT = '.'
 MUL_SIGN = '*'
-
+ONLY_SIGN_AFFECTED_NUMBER = '1'
 
 # Code Section
 class BasicParser:
@@ -44,7 +44,7 @@ class BasicParser:
                 # Check if there if the operator is unary
                 if index == 0 or parse_expr[index - 1] == OPEN_PARENTHESIS:
                     sign = parse_expr[index]
-                    parse_expr = parse_expr[:index] + [float(sign + "1"), MUL_SIGN] + parse_expr[index+1:]
+                    parse_expr = parse_expr[:index] + [float(sign + ONLY_SIGN_AFFECTED_NUMBER), MUL_SIGN] + parse_expr[index+1:]
                     index += 2
                     continue
             index += 1
