@@ -92,7 +92,9 @@ class BasicCalculator(Calculator):
                     math_expr = math_expr[:index - 1] + [result] + math_expr[index + 2:]
                 else:
                     index += 1
-        return math_expr.pop()
+        if len(math_expr) == 1:
+            return math_expr.pop()
+        raise SyntaxError("Invalid math expression")
 
     def __doc__(self):
         return """The Basic Calculator: Basic calculator that calculate expression which can include parenthesis"""
