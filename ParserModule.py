@@ -24,7 +24,7 @@ class BasicParser:
         math_expr = ' '.join(math_expr.split())
         # Check basic validation
         if not (BasicParser.__is_valid_parenthesis(math_expr) and BasicParser.__is_valid_char(math_expr, operations)):
-            return None
+            raise SyntaxError("Invalid math expression")
         parse_expr = BasicParser.__split_to_elements(math_expr, operations)
         # Convert the numbers in the list to float
         BasicParser.__convert_list_elements_to_float(parse_expr)

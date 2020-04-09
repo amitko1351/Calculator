@@ -38,8 +38,6 @@ class BasicCalculator(Calculator):
         # Parse the expression
         math_expr = BasicParser.parse_math_expr_to_list(math_expr, list(itertools.chain.from_iterable(
             self._operations_order)))
-        if math_expr is None:
-            raise SyntaxError("Invalid math expression")
         try:
             self.__eval_parenthesis_expr(math_expr)
         except (IndexError):
