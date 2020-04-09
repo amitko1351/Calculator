@@ -1,6 +1,8 @@
 # Import Section
 from abc import ABC, abstractmethod
 from MathModule import Math
+from ParserModule import BasicParser
+import itertools
 
 # Global Variable Section
 OPEN_PARENTHESIS = '('
@@ -30,8 +32,25 @@ class BasicCalculator(Calculator):
     def evaluate(self, math_expr):
         """
         The function evaluate the math expresion it gets
-        :param math_expr: list of math expression -> [1, '+', 3]
+        :param math_expr: string of math expression -> '1+3'
         :return: the result of the math expression -> 4.0
+        """
+        # Parse the expression
+        math_expr = BasicParser.parse_math_expr_to_list(math_expr, list(itertools.chain.from_iterable(
+            self._operations_order)))
+        if math_expr is None:
+            raise SyntaxError("Invalid math expression")
+        try:
+            self.__eval_parenthesis_expr(math_expr)
+        except (IndexError):
+            raise SyntaxError("Invalid math expression")
+
+
+    def __eval_parenthesis_expr(self, math_expr):
+        """
+        The function calculates the math expression 
+        :param math_expr: math expression represent as a list -> ['-', '(', 9, '-', '(', 3, '+', 7, ')']
+        :return: the result
         """
         global CLOSE_PARENTHESIS, OPEN_PARENTHESIS
         stack_expr = []  # Contain the expression used for the algorithm for scan parenthesis
