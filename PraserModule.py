@@ -82,7 +82,7 @@ class BasicParser:
         :param operations: the valid operations
         :return: True if valid else False
         """
-        for element in math_expr.split():
+        for element in list(math_expr):
             if not (element in operations or element == CLOSE_PARENTHESIS or
                             element == OPEN_PARENTHESIS or element.isdigit() or element == DOT):
                 return False
@@ -96,7 +96,7 @@ class BasicParser:
         :return: True if valid else False
         """
         stack_open_parenthesis = []
-        for element in math_expr.split():
+        for element in list(math_expr):
             if element == OPEN_PARENTHESIS:
                 stack_open_parenthesis.append(element)
             elif element == CLOSE_PARENTHESIS:
