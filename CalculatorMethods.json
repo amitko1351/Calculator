@@ -1,0 +1,12 @@
+{
+  "basic_method":{
+    "operations_functions": {
+            "+": "add",
+            "-": "sub",
+            "/": "div",
+            "*": "mul"
+        },
+    "operations_order": [["/", "*"], ["+", "-"]],
+    "doc": "The basic method + - * / with the normal order of calculation"
+  }
+}
