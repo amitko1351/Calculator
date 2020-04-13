@@ -20,8 +20,9 @@ class Calculator(ABC):
     def evaluate(self, math_expr):
         pass
 
+    @staticmethod
     @abstractmethod
-    def __doc__(self):
+    def __doc__():
         pass
 
 
@@ -96,5 +97,6 @@ class BasicCalculator(Calculator):
             return math_expr.pop()
         raise SyntaxError("Invalid math expression")
 
-    def __doc__(self):
+    @staticmethod
+    def __doc__():
         return """The Basic Calculator: Basic calculator that calculate expression which can include parenthesis"""
