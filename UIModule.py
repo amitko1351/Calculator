@@ -61,7 +61,7 @@ class UI:
             # Get the choice
             index_chose_calculator = input("Your choice ->")
             # Check validation
-            if index_chose_calculator.isdigit() and len(self.__calculators) > int(index_chose_calculator) >= 0:
+            if index_chose_calculator.isdigit() and 0 <= int(index_chose_calculator) < len(self.__calculators):
                 return self.__calculators[int(index_chose_calculator)]
             # Invalid input
             print("Invalid input, please make to sure to enter the correct number", file=sys.stderr)
@@ -81,7 +81,7 @@ class UI:
             # Get the choice
             index_chose_method = input("Your choice ->")
             # Check validation
-            if index_chose_method.isdigit() and len(calculation_methods_names) > int(index_chose_method) >= 0:
+            if index_chose_method.isdigit() and 0 <= int(index_chose_method) < len(calculation_methods_names):
                 return calculation_methods_names[int(index_chose_method)]
             # Invalid input
             print("Invalid input, please make to sure to enter the correct number", file=sys.stderr)
