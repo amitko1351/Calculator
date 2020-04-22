@@ -1,29 +1,12 @@
 # Import Section
 import itertools
-from abc import ABC, abstractmethod
 from math import Math
 from math_parsers import BasicParser
+from .calculator import Calculator
 
 # Global Variable Section
 OPEN_PARENTHESIS = '('
 CLOSE_PARENTHESIS = ')'
-
-
-# Code Section
-class Calculator(ABC):
-    def __init__(self, operations_functions, operations_order):
-        self._operations_functions = operations_functions
-        self._operations_order = operations_order
-        super().__init__()
-
-    @abstractmethod
-    def evaluate(self, math_expr):
-        pass
-
-    @staticmethod
-    @abstractmethod
-    def __doc__():
-        pass
 
 
 class BasicCalculator(Calculator):
@@ -43,7 +26,6 @@ class BasicCalculator(Calculator):
             return self.__eval_parenthesis_expr(math_expr)
         except (IndexError, TypeError):
             raise SyntaxError("Invalid math expression")
-
 
     def __eval_parenthesis_expr(self, math_expr):
         """
