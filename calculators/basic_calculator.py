@@ -1,6 +1,6 @@
 # Import Section
 import itertools
-from math import Math
+from math_operators import Math
 from math_parsers import BasicParser
 from .calculator import Calculator
 
@@ -15,9 +15,9 @@ class BasicCalculator(Calculator):
 
     def evaluate(self, math_expr):
         """
-        The function evaluate the math expresion it gets
-        :param math_expr: string of math expression -> '1+3'
-        :return: the result of the math expression -> 4.0
+        The function evaluate the math_operators expresion it gets
+        :param math_expr: string of math_operators expression -> '1+3'
+        :return: the result of the math_operators expression -> 4.0
         """
         # Parse the expression
         math_expr = BasicParser.parse_math_expr_to_list(math_expr, list(itertools.chain.from_iterable(
@@ -25,12 +25,12 @@ class BasicCalculator(Calculator):
         try:
             return self.__eval_parenthesis_expr(math_expr)
         except (IndexError, TypeError):
-            raise SyntaxError("Invalid math expression")
+            raise SyntaxError("Invalid math_operators expression")
 
     def __eval_parenthesis_expr(self, math_expr):
         """
-        The function calculates the math expression 
-        :param math_expr: math expression represent as a list -> ['-', '(', 9, '-', '(', 3, '+', 7, ')']
+        The function calculates the math_operators expression 
+        :param math_expr: math_operators expression represent as a list -> ['-', '(', 9, '-', '(', 3, '+', 7, ')']
         :return: the result
         """
         global CLOSE_PARENTHESIS, OPEN_PARENTHESIS
@@ -55,9 +55,9 @@ class BasicCalculator(Calculator):
 
     def __eval_none_parenthesis_expr(self, math_expr):
         """
-        The function calculates the math expression (assumption that there are no
+        The function calculates the math_operators expression (assumption that there are no
         parenthesis in it)
-        :param math_expr: math expression (assumption that there are no
+        :param math_expr: math_operators expression (assumption that there are no
         parenthesis in it) -> [1, '*', 4]
         :return: the result
         """
@@ -77,7 +77,7 @@ class BasicCalculator(Calculator):
                     index += 1
         if len(math_expr) == 1:
             return math_expr.pop()
-        raise SyntaxError("Invalid math expression")
+        raise SyntaxError("Invalid math_operators expression")
 
     @staticmethod
     def __doc__():
