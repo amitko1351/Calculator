@@ -1,7 +1,7 @@
 # Import Section
 from abc import ABC, abstractmethod
 from MathModule import Math
-from ParserModule import BasicParser
+from math_parsers import BasicParser
 import itertools
 
 # Global Variable Section

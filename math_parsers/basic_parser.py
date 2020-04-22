@@ -9,6 +9,7 @@ DOT = '.'
 MUL_SIGN = '*'
 ONLY_SIGN_AFFECTED_NUMBER = '1'
 
+
 # Code Section
 class BasicParser:
     @staticmethod
@@ -23,6 +24,7 @@ class BasicParser:
         # Delete multi whitespaces
         math_expr = ' '.join(math_expr.split())
         # Check basic validation
+        # TODO - sperate the validation to function
         if not (BasicParser.__is_valid_parenthesis(math_expr) and BasicParser.__is_valid_char(math_expr, operations)):
             raise SyntaxError("Invalid math expression")
         parse_expr = BasicParser.__split_to_elements(math_expr, operations)
@@ -44,7 +46,8 @@ class BasicParser:
                 # Check if there if the operator is unary
                 if index == 0 or parse_expr[index - 1] == OPEN_PARENTHESIS:
                     sign = parse_expr[index]
-                    parse_expr = parse_expr[:index] + [float(sign + ONLY_SIGN_AFFECTED_NUMBER), MUL_SIGN] + parse_expr[index+1:]
+                    parse_expr = parse_expr[:index] + [float(sign + ONLY_SIGN_AFFECTED_NUMBER), MUL_SIGN] + parse_expr[
+                                                                                                            index + 1:]
                     index += 2
                     continue
             index += 1
