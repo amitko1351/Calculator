@@ -1,8 +1,8 @@
 # Import Section
-from abc import ABC, abstractmethod
-from MathModule import Math
-from math_parsers import BasicParser
 import itertools
+from abc import ABC, abstractmethod
+from math import Math
+from math_parsers import BasicParser
 
 # Global Variable Section
 OPEN_PARENTHESIS = '('
