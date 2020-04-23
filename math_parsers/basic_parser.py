@@ -82,5 +82,4 @@ class BasicParser:
         """
         return MathValidation.is_contains_only_numbers_and_operations(math_expr, self.operations,
                                                                       self.open_parenthesis, self.close_parenthesis) \
-               and MathValidation.is_contains_only_numbers_and_operations(math_expr, self.operations,
-                                                                          self.open_parenthesis, self.close_parenthesis)
+               and MathValidation.is_valid_parenthesis(math_expr, self.open_parenthesis, self.close_parenthesis)
