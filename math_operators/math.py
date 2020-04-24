@@ -3,7 +3,7 @@ class Math:
     Contain math operations 
     """
     @staticmethod
-    def add(num1, num2):
+    def add(num1: float or int, num2: float or int) -> float or int:
         """
         The function do addition operation on the two number 
         num1 + num2
@@ -12,7 +12,7 @@ class Math:
         return num1 + num2
 
     @staticmethod
-    def sub(num1, num2):
+    def sub(num1: float or int, num2: float or int) -> float or int:
         """
         The function do subtraction operation on the two number 
         num1 - num2
@@ -21,7 +21,7 @@ class Math:
         return num1 - num2
 
     @staticmethod
-    def div(num1, num2):
+    def div(num1: float or int, num2: float or int) -> float or int:
         """
         The function do division operation on the two number 
         num1 / num2
@@ -30,7 +30,7 @@ class Math:
         return float(num1) / num2
 
     @staticmethod
-    def mul(num1, num2):
+    def mul(num1: float or int, num2: float or int) -> float or int:
         """
         The function do multiplication operation on the two number 
         num1 / num2

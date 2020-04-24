@@ -11,12 +11,12 @@ ONLY_SIGN_AFFECTED_NUMBER = '1'
 
 # Code Section
 class BasicParser:
-    def __init__(self, operations, open_parenthesis='(', close_parenthesis=')'):
+    def __init__(self, operations: list, open_parenthesis: str='(', close_parenthesis: str=')'):
         self.operations = operations
         self.open_parenthesis = open_parenthesis
         self.close_parenthesis = close_parenthesis
 
-    def parse_math_expr_to_list(self, math_expr):
+    def parse_math_expr_to_list(self, math_expr: str) -> list:
         """
         The function prase the math experssion to a list
         :param math_expr: the math expression
@@ -34,7 +34,7 @@ class BasicParser:
         parse_expr = self.__parse_unary_operators(parse_expr)
         return parse_expr
 
-    def __parse_unary_operators(self, parse_expr):
+    def __parse_unary_operators(self, parse_expr: list) -> list:
         """
         The function parse unary operation to <unary>1 * number
         :param parse_expr: the list to parse
@@ -53,7 +53,7 @@ class BasicParser:
             index += 1
         return parse_expr
 
-    def __convert_list_elements_to_float(self, parse_expr):
+    def __convert_list_elements_to_float(self, parse_expr: list):
         """
         Try to convert all the number in the list to float
         :param parse_expr: the list to convert
@@ -64,7 +64,7 @@ class BasicParser:
             except ValueError:
                 pass
 
-    def __split_to_elements(self, math_expr):
+    def __split_to_elements(self, math_expr: str) -> list:
         """
         The function split the math_expr to all the elements ot the math experssion
         :param math_expr: the string of the math expression
@@ -74,7 +74,7 @@ class BasicParser:
                                                                                            self.close_parenthesis]) + "]"
         return re.findall(regex_of_element, math_expr)
 
-    def __is_valid_expression(self, math_expr):
+    def __is_valid_expression(self, math_expr: str) -> bool:
         """
         The function check if the expression is valid base on the list of validation checks
         :param math_expr: the string of the math expression

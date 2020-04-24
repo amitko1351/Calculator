@@ -9,7 +9,7 @@ MARGIN = 7
 # Code Section
 
 class UI:
-    def __init__(self, calculators, calculator_methods_conf_file):
+    def __init__(self, calculators: list, calculator_methods_conf_file: str):
         self.__calculators = calculators
         self.__operate_calculator = None
         # Read form the configuration file given
@@ -23,7 +23,7 @@ class UI:
         welcome_message = "Welcome to the Cool Calculator"
         self.print_header(welcome_message)
 
-    def print_header(self, header):
+    def print_header(self, header: str):
         """
         The function print thr header in the format
         --------------------------------------------
@@ -48,7 +48,7 @@ class UI:
             # Loop until exit thr calculator
             self.__active_calculator(chose_calculator, chose_calculator_method)
 
-    def __choose_calculator(self):
+    def __choose_calculator(self) -> type:
         """
         The function let the user choose the calculator type 
         :return: the type of calculator choose
@@ -66,7 +66,7 @@ class UI:
             # Invalid input
             print("Invalid input, please make to sure to enter the correct number", file=sys.stderr)
 
-    def __choose_calculator_method(self):
+    def __choose_calculator_method(self) -> str:
         """
         The function let the user choose the method of calculation
         :return: the method of calculation chose
@@ -86,7 +86,7 @@ class UI:
             # Invalid input
             print("Invalid input, please make to sure to enter the correct number", file=sys.stderr)
 
-    def __active_calculator(self, chose_calculator, chose_calculator_method):
+    def __active_calculator(self, chose_calculator: type, chose_calculator_method: str):
         """
         The function activate the calculator chose 
         :param chose_calculator: the class of the chose calculator
@@ -108,4 +108,3 @@ class UI:
                 print(e.msg)
             except ZeroDivisionError as e:
                 print("Can't divided by zero")
-

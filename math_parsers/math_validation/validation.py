@@ -4,7 +4,7 @@ DOT = '.'
 # Code Section
 class MathValidation:
     @staticmethod
-    def is_valid_parenthesis(math_expr, open_parenthesis, close_parenthesis):
+    def is_valid_parenthesis(math_expr: str, open_parenthesis: str, close_parenthesis: str) -> bool:
         """
         The function check if the parenthesis in the math expression is valid
         :param close_parenthesis: the char of the close parenthesis
@@ -24,7 +24,8 @@ class MathValidation:
         return len(stack_open_parenthesis) == 0
 
     @staticmethod
-    def is_contains_only_numbers_and_operations(math_expr, operations, open_parenthesis, close_parenthesis):
+    def is_contains_only_numbers_and_operations(math_expr: str, operations: list, open_parenthesis: str,
+                                                close_parenthesis: str) -> bool:
         """
         The function check if all the char are only numbers and operations
         :param close_parenthesis: the char of the close parenthesis

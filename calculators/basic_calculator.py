@@ -10,12 +10,12 @@ CLOSE_PARENTHESIS = ')'
 
 
 class BasicCalculator(Calculator):
-    def __init__(self, operations_functions, operations_order):
+    def __init__(self, operations_functions: dict, operations_order: list):
         super().__init__(operations_functions, operations_order)
         self.parser = BasicParser(list(itertools.chain.from_iterable(self._operations_order)), OPEN_PARENTHESIS,
                                   CLOSE_PARENTHESIS)
 
-    def evaluate(self, math_expr):
+    def evaluate(self, math_expr: str) -> float:
         """
         The function evaluate the math_operators expresion it gets
         :param math_expr: string of math_operators expression -> '1+3'
@@ -28,7 +28,7 @@ class BasicCalculator(Calculator):
         except (IndexError, TypeError):
             raise SyntaxError("Invalid math_operators expression")
 
-    def __eval_parenthesis_expr(self, math_expr):
+    def __eval_parenthesis_expr(self, math_expr: list) -> float:
         """
         The function calculates the math_operators expression 
         :param math_expr: math_operators expression represent as a list -> ['-', '(', 9, '-', '(', 3, '+', 7, ')']
@@ -54,7 +54,7 @@ class BasicCalculator(Calculator):
             return self.__eval_none_parenthesis_expr(stack_expr)
         return stack_expr.pop()
 
-    def __eval_none_parenthesis_expr(self, math_expr):
+    def __eval_none_parenthesis_expr(self, math_expr: list) -> float:
         """
         The function calculates the math_operators expression (assumption that there are no
         parenthesis in it)
@@ -81,5 +81,5 @@ class BasicCalculator(Calculator):
         raise SyntaxError("Invalid math_operators expression")
 
     @staticmethod
-    def __doc__():
+    def __doc__() -> str:
         return """The Basic Calculator: Basic calculator that calculate expression which can include parenthesis"""
