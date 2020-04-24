@@ -78,7 +78,7 @@ class BasicCalculator(Calculator):
                     index += 1
         if len(math_expr) == 1:
             return math_expr.pop()
-        raise SyntaxError("Invalid math_operators expression")
+        raise SyntaxError("Invalid math expression")
 
     @staticmethod
     def __doc__() -> str:
