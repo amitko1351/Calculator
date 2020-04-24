@@ -12,7 +12,7 @@ CLOSE_PARENTHESIS = ')'
 class BasicCalculator(Calculator):
     def __init__(self, operations_functions: dict, operations_order: list):
         super().__init__(operations_functions, operations_order)
-        self.parser = BasicParser(list(itertools.chain.from_iterable(self._operations_order)), OPEN_PARENTHESIS,
+        self.__parser = BasicParser(list(itertools.chain.from_iterable(self._operations_order)), OPEN_PARENTHESIS,
                                   CLOSE_PARENTHESIS)
 
     def evaluate(self, math_expr: str) -> float:
@@ -22,7 +22,7 @@ class BasicCalculator(Calculator):
         :return: the result of the math_operators expression -> 4.0
         """
         # Parse the expression
-        math_expr = self.parser.parse_math_expr_to_list(math_expr)
+        math_expr = self.__parser.parse_math_expr_to_list(math_expr)
         try:
             return self.__eval_parenthesis_expr(math_expr)
         except (IndexError, TypeError):
