@@ -29,7 +29,7 @@ class BasicCalculator(Calculator):
         try:
             return self.__eval_parenthesis_expr(math_expr)
         except (IndexError, TypeError):
-            raise SyntaxError("Invalid math_operators expression")
+            raise SyntaxError("Invalid math expression")
 
     def __eval_parenthesis_expr(self, math_expr: list) -> float:
         """
