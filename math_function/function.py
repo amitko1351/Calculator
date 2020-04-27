@@ -35,3 +35,10 @@ class MathFunction:
         if len(params) != self.__number_of_params:
             TypeError(f"Invalid number of parameters pass to the function named {self.__name}")
         return self.__expression.format(*params)
+
+    def get_name(self) -> str:
+        """
+        The function return the function name
+        :return: thr function name
+        """
+        return self.__name

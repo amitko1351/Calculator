@@ -12,6 +12,20 @@ class FunctionParser:
         self.__open_parenthesis = open_parenthesis
         self.__close_parenthesis = close_parenthesis
 
+    def parse_function_expression(self, expression: str, functions: dict) -> str:
+        """
+        The function parse a function expression to a simple expression by parse the function to its translation
+        :param functions: the function exist as a dict{name:MathFunction}
+        :return: simple expression without function
+        """
+        # Delete whitespaces
+        expression = ' '.join(expression.split())
+        regex_to_find_functions = "(([a-z]+)\(((\d+|\d*\.\d+)([,]\d+|\d*\.\d+)*)\))"
+        matches_functions = re.finditer(regex_to_find_functions, expression)
+        for match_function in matches_functions:
+            expression = self.__change_function_to_translation(expression, functions, match_function)
+        return expression
+
     def parse_equation_to_function(self, equation: str, calculator_to_check: Calculator) -> MathFunction:
         """
         Thr function parse an equation to math function -> a(b,c,d) = b + c + d
@@ -60,3 +74,24 @@ class FunctionParser:
         params = equation_structure.group(params_group).split(",")  # The group consist the params
         expression = equation_structure.group(expression_group)  # The group consist the expression
         return name, params, expression
+
+    def __change_function_to_translation(self, expression: str, functions: dict, match_function) -> str:
+        """
+        The function change the match function in the expression to its translation  
+        :param match_function: the match function found : match object of re
+        :return: the expression with the function match translation 
+        """
+        full_match_group = 0
+        name_group = 2
+        params_group = 3
+        function_name = match_function.group(name_group)
+        function_params = match_function.group(params_group).split(',')
+        # Change the params to float
+        function_params = [float(param) for param in function_params]
+        if function_name not in functions.keys():
+            raise SyntaxError(f"Invalid expression, No function named {function_name}")
+        # Translate function and add parenthesis to the translation
+        function_translation = self.__open_parenthesis + functions[function_name].translate_expression(
+            *function_params) + self.__close_parenthesis
+        function_full_call = match_function.group(full_match_group)
+        return expression.replace(function_full_call, function_translation)
