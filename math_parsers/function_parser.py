@@ -69,7 +69,7 @@ class FunctionParser:
         expression_group = 6
         equation_structure = re.fullmatch(regex, equation)
         if equation_structure is None:
-            raise SyntaxError("Invalid equation function")
+            raise TypeError("Invalid equation function")
         name = equation_structure.group(name_group)  # The group consist the name
         params = equation_structure.group(params_group).split(",")  # The group consist the params
         expression = equation_structure.group(expression_group)  # The group consist the expression

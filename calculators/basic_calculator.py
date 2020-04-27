@@ -4,16 +4,19 @@ from math_operators import Math
 from math_parsers import BasicParser
 from .calculator import Calculator
 
+
 # Global Variable Section
-OPEN_PARENTHESIS = '('
-CLOSE_PARENTHESIS = ')'
+
 
 
 class BasicCalculator(Calculator):
+    OPEN_PARENTHESIS = '('
+    CLOSE_PARENTHESIS = ')'
+
     def __init__(self, operations_functions: dict, operations_order: list):
         super().__init__(operations_functions, operations_order)
-        self.__parser = BasicParser(list(itertools.chain.from_iterable(self._operations_order)), OPEN_PARENTHESIS,
-                                  CLOSE_PARENTHESIS)
+        self.__parser = BasicParser(list(itertools.chain.from_iterable(self._operations_order)), self.OPEN_PARENTHESIS,
+                                    self.CLOSE_PARENTHESIS)
 
     def evaluate(self, math_expr: str) -> float:
         """
@@ -34,14 +37,13 @@ class BasicCalculator(Calculator):
         :param math_expr: math_operators expression represent as a list -> ['-', '(', 9, '-', '(', 3, '+', 7, ')']
         :return: the result
         """
-        global CLOSE_PARENTHESIS, OPEN_PARENTHESIS
         stack_expr = []  # Contain the expression used for the algorithm for scan parenthesis
         stack_open_parenthesis_pos = []  # Contain thr places of the open parenthesis
         for element in math_expr:
-            if element == OPEN_PARENTHESIS:
+            if element == self.OPEN_PARENTHESIS:
                 stack_expr.append(element)
                 stack_open_parenthesis_pos.append(len(stack_expr) - 1)
-            elif element == CLOSE_PARENTHESIS:
+            elif element == self.CLOSE_PARENTHESIS:
                 last_open_parenthesis_pos = stack_open_parenthesis_pos.pop()
                 result = self.__eval_none_parenthesis_expr(stack_expr[last_open_parenthesis_pos + 1:])
                 # Delete the Calculate part from the stack expression
