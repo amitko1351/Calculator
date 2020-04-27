@@ -61,7 +61,7 @@ class FunctionParser:
         :param equation: string describe the function -> a(b,c,d) = b + c + d
         :return: the equation's components
         """
-        regex = f'^((([a-z]+)\(([a-z]+([,]+[a-z])*)\))=(([{"".join(self.__operations)}]|\d*\.\d+|\d+|' \
+        regex = f'^((([a-z]+)\(([a-z]+([,][a-z])*)\))=(([{"".join(self.__operations)}]|\d*\.\d+|\d+|' \
                 f'[{self.__open_parenthesis}{self.__close_parenthesis}]|[' \
                 f'a-z]+)+))$'
         name_group = 3
