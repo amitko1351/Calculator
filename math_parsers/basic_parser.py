@@ -70,7 +70,7 @@ class BasicParser:
         :param math_expr: the string of the math expression
         :return: list with the elements
         """
-        regex_of_element = r'\d+|[' + "".join(self.operations) + "]|\d*\.\d+|[" + "".join([self.open_parenthesis,
+        regex_of_element = r'\d*\.\d+|\d+|[' + "".join(self.operations) + "]|[" + "".join([self.open_parenthesis,
                                                                                            self.close_parenthesis]) + "]"
         return re.findall(regex_of_element, math_expr)
 
