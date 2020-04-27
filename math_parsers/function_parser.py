@@ -34,7 +34,7 @@ class FunctionParser:
         :return: MathFunction object represent the function
         """
         # Delete whitespaces
-        equation = ' '.join(equation.split())
+        equation = ''.join(equation.split())
         name, params, expression = self.__split_equation(equation)
         if not self.__is_valid_function(name, params, expression, calculator_to_check):
             raise SyntaxError("Invalid function")

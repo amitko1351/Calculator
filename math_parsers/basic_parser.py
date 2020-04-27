@@ -24,7 +24,7 @@ class BasicParser:
         the expression
         """
         # Delete multi whitespaces
-        math_expr = ' '.join(math_expr.split())
+        math_expr = ''.join(math_expr.split())
         # Check basic validation
         if not (self.__is_valid_expression(math_expr)):
             raise SyntaxError("Invalid math expression")
