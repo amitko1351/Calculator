@@ -62,4 +62,5 @@ class FunctionCalculator(BasicCalculator):
 
     @staticmethod
     def __doc__():
-        return """Solve function"""
+        return """Function Calculator : base on the Basic Calculator and can use function and create ones (by name(
+        params)=expression)"""
