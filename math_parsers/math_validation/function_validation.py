@@ -29,7 +29,7 @@ class FunctionValidation:
         """
         Thr function check if the parameters are valid not an operation or a parenthesis
         :param params: the list of the parameters
-        :param operation: the valid operation
+        :param operations: the valid operation
         :return: True if the parameters are valid
         """
         for param in params:
@@ -59,11 +59,13 @@ class FunctionValidation:
         :return: True if valid otherwise False
         """
         # Put a number instant of all the params in the list
-        number = 0
+        number = 1
         for param in params:
             expression = re.sub(f'{param}', f'{number}', expression)
         try:
             calculator_to_check.evaluate(expression)
         except SyntaxError:
             return False
+        except ZeroDivisionError:
+            return True
         return True
