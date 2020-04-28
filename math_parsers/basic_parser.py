@@ -12,9 +12,9 @@ ONLY_SIGN_AFFECTED_NUMBER = '1'
 # Code Section
 class BasicParser:
     def __init__(self, operations: list, open_parenthesis: str='(', close_parenthesis: str=')'):
-        self.operations = operations
-        self.open_parenthesis = open_parenthesis
-        self.close_parenthesis = close_parenthesis
+        self.__operations = operations
+        self.__open_parenthesis = open_parenthesis
+        self.__close_parenthesis = close_parenthesis
 
     def parse_math_expr_to_list(self, math_expr: str) -> list:
         """
@@ -44,7 +44,7 @@ class BasicParser:
             # Check if the operator can be unary
             if parse_expr[index] in UNARY_OPERATORS:
                 # Check if there if the operator is unary
-                if index == 0 or parse_expr[index - 1] == self.open_parenthesis:
+                if index == 0 or parse_expr[index - 1] == self.__open_parenthesis:
                     sign = parse_expr[index]
                     parse_expr = parse_expr[:index] + [float(sign + ONLY_SIGN_AFFECTED_NUMBER), MUL_SIGN] + parse_expr[
                                                                                                             index + 1:]
@@ -70,8 +70,8 @@ class BasicParser:
         :param math_expr: the string of the math expression
         :return: list with the elements
         """
-        regex_of_element = r'\d*\.\d+|\d+|[' + "".join(self.operations) + "]|[" + "".join([self.open_parenthesis,
-                                                                                           self.close_parenthesis]) + "]"
+        regex_of_element = r'\d*\.\d+|\d+|[' + "".join(self.__operations) + "]|[" + "".join([self.__open_parenthesis,
+                                                                                           self.__close_parenthesis]) + "]"
         return re.findall(regex_of_element, math_expr)
 
     def __is_valid_expression(self, math_expr: str) -> bool:
@@ -80,6 +80,6 @@ class BasicParser:
         :param math_expr: the string of the math expression
         :return: True if valid otherwise false
         """
-        return MathValidation.is_contains_only_numbers_and_operations(math_expr, self.operations,
-                                                                      self.open_parenthesis, self.close_parenthesis) \
-               and MathValidation.is_valid_parenthesis(math_expr, self.open_parenthesis, self.close_parenthesis)
+        return MathValidation.is_contains_only_numbers_and_operations(math_expr, self.__operations,
+                                                                      self.__open_parenthesis, self.__close_parenthesis) \
+               and MathValidation.is_valid_parenthesis(math_expr, self.__open_parenthesis, self.__close_parenthesis)
