@@ -20,7 +20,7 @@ class FunctionParser:
         """
         # Delete whitespaces
         expression = ' '.join(expression.split())
-        regex_to_find_functions = "(([a-z]+)\(((\d+|\d*\.\d+)([,]\d+|\d*\.\d+)*)\))"
+        regex_to_find_functions = "(([a-z]+\d*)\(((\d+|\d*\.\d+)([,]\d+|\d*\.\d+)*)\))"
         matches_functions = re.finditer(regex_to_find_functions, expression)
         for match_function in matches_functions:
             expression = self.__change_function_to_translation(expression, functions, match_function)
@@ -61,9 +61,9 @@ class FunctionParser:
         :param equation: string describe the function -> a(b,c,d) = b + c + d
         :return: the equation's components
         """
-        regex = f'^((([a-z]+)\(([a-z]+([,][a-z]+)*)\))=(([{"".join(self.__operations)}]|\d*\.\d+|\d+|' \
+        regex = f'^((([a-z]+\d*)\(([a-z]+\d*([,][a-z]+\d*)*)\))=(([{"".join(self.__operations)}]|\d*\.\d+|\d+|' \
                 f'[{self.__open_parenthesis}{self.__close_parenthesis}]|[' \
-                f'a-z]+)+))$'
+                f'a-z]+\d*)+))$'
         name_group = 3
         params_group = 4
         expression_group = 6
