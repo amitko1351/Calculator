@@ -17,7 +17,7 @@ class FunctionValidation:
         :return: True if all the params in the expression in the the params list
         """
         # Put a number instant of all the params in the list
-        number = 0
+        number = 1
         for param in params:
             expression = re.sub(f'{param}', f'{number}', expression)
         # Check if there are params left in expression that are not in the params list
